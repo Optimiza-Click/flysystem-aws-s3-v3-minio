@@ -583,7 +583,7 @@ class AwsS3Adapter extends AbstractAdapter implements CanOverwriteFiles
         $acl = array_key_exists('ACL', $options) ? $options['ACL'] : 'private';
 
         if ( ! isset($options['ContentType'])) {
-            $options['ContentType'] = Util::guessMimeType($path, $body);
+            $options['ContentType'] = Util::guessMimeType(str_replace('.temp','',$path), $body);
         }
 
         if ( ! isset($options['ContentLength'])) {
